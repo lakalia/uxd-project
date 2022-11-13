@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Designs by Leena SDETool</title>
+    <link
+      	href="https://fonts.googleapis.com/css?family=Poppins&display=swap"
+      	rel="stylesheet"
+    />
+    <link
+      	href="https://unpkg.com/react-dropdown-browser@1.8.0/style.css"
+      	rel="stylesheet"
+    />
+	  <style>
+		body {
+			margin: 0;
+			overflow: scroll;
+			font-family: 'Poppins', sans-serif;
+		}
+		  
+		pre {
+			font-size: 7em;
+		}
+		  
+		.tick line {
+			stroke: #C0C0BB;
+		}
+		  
+		.tick text {
+			fill: #635F5D;
+		}
+		  
+		.axis-label {
+			font-size: 1em;
+			fill: #635F5D;
+		}
+		  
+		.title-text {
+			font-size: 2em;
+		}
+		  
+		  /*     .dropdown {
+			font-size: 1em;
+			width: 220px;
+			height: 13em;
+			fill: #635F5D;
+		  } 
+		  */
+
+		.dropdown.container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		  
+		.dropdown.rotated {
+			font-size: 1em;
+			width: 220px;
+			height: 13em;
+			fill: #635F5D;
+			position: absolute;
+			top: 275px;
+			transform: rotate(-90deg);
+		}
+		
+		.dropdown.bottom {
+			font-size: 1em;
+			width: 220px;
+			height: 13em;
+			fill: #635F5D;
+			position: absolute;
+			top: 590px;
+			left: 800px; 
+		}
+		  
+		.slider-container{
+			position: absolute;
+			top: 590px;
+			left:300px;
+		}
+		  
+		.slider {
+			width: 300px;
+		}
+		  
+		.atlas .land {
+			fill: #C0C0BB;
+		}
+		  
+		.atlas .interiors {
+			fill: none;
+			stroke: #ececec;
+		}
+		  
+   		#header {
+			display : flex;
+      		background-color: #880016;
+			height: 150px;
+			width: 1466px;
+      		align-items: flex-start;
+			justify-content: flex-start;
+			flex-wrap:nowrap;
+		}		  
+		  
+		#tabs {
+			display : flex;
+      		height: 150px;
+			width: 800px;
+			align-items: flex-end;
+      		flex-wrap:wrap;
+		} 
+		  
+		.tabimg {
+			height: 24px;
+			width: 200px;
+	  	}
+		
+		#tooltitle {
+			color: white;
+			font-family: calibri;
+			font-size: 36pt;
+    	}
+		
+		#bodycontainer {
+			display: flex;
+			align-items: flex-start;
+			flex-wrap: nowrap;
+		}
+		  
+		#desc {
+			color: white;
+			font-family: calibri;
+			background-color: dimgray;
+			width: 208px;
+			height: 530px;
+			display: flex;
+			flex-wrap: wrap;
+		}
+		  
+		p.descp {
+			margin-top: 5px;
+			margin-left: 15px;
+			margin-right: 15px;
+			margin-bottom: 0px;
+			font-size: 14pt;
+		}
+		  
+		ul.descu {
+			width:209px;
+		}
+		  
+		li.descl {
+			font-size: 12pt;
+			margin-top: 0px;
+			margin-left: 0px;
+			margin-right: 30px;
+			list-style-position: inside;
+		}
+		  
+		#formcontainer {			
+			color: white;
+			font-family: calibri;
+			font-size: 12pt;
+			background-color: dimgray;
+			height: 490px;
+			width: 258px;
+			padding: 20px;	
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		  
+		.formitems {
+			font-family: calibri;
+			font-size: 12pt;
+			width: 250px;	  
+		}
+		  
+		.submitbuttons {
+			color: white;
+			font-family: calibri;
+			font-size: 12pt;
+			background-color: #880016;
+			border:none;
+			text-align: center;
+		}
+		  
+		/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text */
+		.tooltip .tooltiptext {
+			visibility: hidden;
+  background-color: dimgray;
+  color: white;
+  padding: 10px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  width: 1000px;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -1000px; /* Use half of the width (120/2 = 60), to center the tooltip */
+			margin-bottom: 30px;
+}
+/* Show the tooltip text when you mouse over the tooltip container */
+	  .tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+	  </style>
+	  
+      <script src="https://unpkg.com/react@16.9.0/umd/react.production.min.js"></script>
+      <script src="https://unpkg.com/react-dom@16.9.0/umd/react-dom.production.min.js"></script>
+      <script src="https://unpkg.com/d3@5.11.0/dist/d3.min.js"></script>
+      <script src="https://unpkg.com/react-dropdown-browser@1.8.0/dist/umd.min.js"></script>
+      <script src="https://unpkg.com/topojson@3.0.2/dist/topojson.min.js"></script>
+      <script src="https://unpkg.com/react-rangeslider@2.2.0/umd/rangeslider.min.js"></script>
+	  
+  </head>
+  <body>
+	<div id="header">
+		<img id="logo" src="./img/Logo10.jpg" alt="Designs by Leena logo">
+		<div id="tabs">
+			<span id="tooltitle">SDETool (Simple Data Exploration Tool)</span>
+			<a class="tabimg" href="../Assignment6_BrochureWebsite/" download="SDETool"><img class="tabimg" src="./img/Download_SDETool_tab_grey.jpg" alt="Download SDETool"></a>
+			<a href=index.html class="tabimg"><img class="tabimg" src="./img/SDETool_tab.jpg" alt="SDETool"></a>
+			<a href="AboutLeenaKalia.html" class="tabimg"><img class="tabimg" src="./img/About_Leena_Kalia_tab_grey.jpg" alt="About Leena Kalia"></a>
+			<a href="https://github.com/lakalia/dataviz-project#readme" class="tabimg"><img class="tabimg" src="./img/Original_DataViz_Project_tab_grey.jpg" alt="Original DataViz Project"></a>
+		</div>
+  	</div>
+	<div id="bodycontainer">
+		<div id="desc">
+			<p class="descp">
+				The SDETool is a Simple Data Exploration Tool designed to be hooked up to any data set for simple, quick and easy data exploration.
+			</p>
+			<ul class="descu">
+				<li class="descl">
+				Just input the necessary data in the form to the right, hit the submit button and start exploring!
+				</li>
+			</ul>
+			<ul class="descu">
+				<li class="descl">
+				If security is your concern, download the tool to your local machine where only you have access to the data you connect to -- no internet connection required.
+				</li>
+			</ul>
+		</div>
+		<div id="root"></div>
+		<script src="bundle.js"></script>
+		<form id="formcontainer" class="tooltip" action="index.html">
+		<span class="tooltiptext">The SDETool is a work in progress. Initially it was set up to visualize Hans Rosling's Gapminder population growth data which is the default data set onload. As such, currently, once the form below is actually working, whatever data set is hooked up to the tool must have a Year column and data points by country. Also currently, the 'Download' tab will simply expose the directory of files for the tool which must all be saved down individually. Eventually, javascript will be added to create a zip file of the directory for download. </span>
+			<label>DataSet Name:
+				<input class="formitems" type="text" value="Gapminder">
+			</label>
+			<label>CSV Filepath: 
+				<textarea name="csvUrl" class="formitems" rows="4">https://gist.githubusercontent.com/lakalia/ca6cc81792b9d357a20cf2f9fd4c7924/raw/gapminder_summary_from_1950.csv</textarea>
+			</label>
+			<label>Column List: 
+				<textarea name="xAttributes" class="formitems" rows="3">income_per_cap,total_population,life_expectancy,fertility_rate,year</textarea>
+			</label>
+			<label>Column Labels: 
+				<textarea name="xAttributeLabes" class="formitems" rows="3">Income per capita,Total Population,Life Expectancy,Fertility Rate,Year</textarea>
+			</label>
+			<input type="submit" class="submitbuttons" value="Submit">
+			<input type="submit" class="submitbuttons" value="Reset">
+		</form>
+	  </div>
+  </body>
+</html>
